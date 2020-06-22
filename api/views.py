@@ -7,7 +7,7 @@ from api.serializers import GhostModelSerializer
 
 # Create your views here.
 class GhostModelViewSet(viewsets.ModelViewSet):
-    queryset = GhostModel.objects.all()
+    queryset = GhostModel.objects.all().order_by('-date')
     serializer_class = GhostModelSerializer
 
     @action(detail=True, methods=['post'])
@@ -23,3 +23,40 @@ class GhostModelViewSet(viewsets.ModelViewSet):
         post.down_vote += 1
         post.save()
         return Response({'status': 'down vote set'})
+
+    @action(detail=False)
+    def boasts(self, request):
+        list_boasts = self.queryset.filter(boast_or_roast='B')
+        page = self.paginate_queryset(list_boasts)
+
+        if page is not None:
+            serializer = self.get_serializer(page, many=True)
+            return self.get_paginated_response(serializer.data)
+
+        serializer = self.get_serializer(list_boasts, many=True)
+        return Response(serializer.data)
+
+    @action(detail=False)
+    def roasts(self, request):
+        list_roasts = self.queryset.filter(boast_or_roast='R')
+        page = self.paginate_queryset(list_roasts)
+
+        if page is not None:
+            serializer = self.get_serializer(page, many=True)
+            return self.get_paginated_response(serializer.data)
+
+        serializer = self.get_serializer(list_roasts, many=True)
+        return Response(serializer.data)
+
+    @action(detail=False)
+    def highest_rated(self, request):
+        list_diff = GhostModel.objects.extra(
+            select={'diff': 'up_vote - down_vote'}).order_by('-diff')
+        page = self.paginate_queryset(list_diff)
+
+        if page is not None:
+            serializer = self.get_serializer(page, many=True)
+            return self.get_paginated_response(serializer.data)
+
+        serializer = self.get_serializer(list_diff, many=True)
+        return Response(serializer.data)
