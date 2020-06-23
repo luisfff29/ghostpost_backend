@@ -13,5 +13,9 @@ class GhostModel(models.Model):
     down_vote = models.PositiveIntegerField(default=0)
     date = models.DateTimeField(default=timezone.now)
 
+    @property
+    def total_votes(self):
+        return self.up_vote - self.down_vote
+
     def __str__(self):
         return self.boast_or_roast

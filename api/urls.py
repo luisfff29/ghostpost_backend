@@ -3,7 +3,7 @@ from rest_framework import routers
 from api import views
 
 router = routers.DefaultRouter()
-router.register(r'ghostmodel', views.GhostModelViewSet)
+router.register(r'posts', views.GhostModelViewSet)
 
 urlpatterns = [
     path('', include(router.urls))
