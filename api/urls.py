@@ -6,5 +6,7 @@ router = routers.DefaultRouter()
 router.register(r'posts', views.GhostModelViewSet)
 
 urlpatterns = [
-    path('', include(router.urls))
+    path('', include(router.urls)),
+    path('posts/magic/<str:magic>/',
+         views.GhostMagicView.as_view(), name='ghostmodel-detail')
 ]

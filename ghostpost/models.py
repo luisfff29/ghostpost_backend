@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from api.helpers import get_magic_str
 
 
 # Create your models here.
@@ -12,6 +13,7 @@ class GhostModel(models.Model):
     up_vote = models.PositiveIntegerField(default=0)
     down_vote = models.PositiveIntegerField(default=0)
     date = models.DateTimeField(default=timezone.now)
+    magic = models.CharField(max_length=6, default=get_magic_str(), null=False)
 
     @property
     def total_votes(self):
