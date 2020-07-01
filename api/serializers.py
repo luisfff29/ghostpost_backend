@@ -6,4 +6,4 @@ class GhostModelSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = GhostModel
         fields = ['url', 'text', 'boast_or_roast',
-                  'up_vote', 'down_vote', 'date', 'total_votes']
+                  'up_vote', 'down_vote', 'date', 'total_votes', 'magic']
