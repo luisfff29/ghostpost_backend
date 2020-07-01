@@ -6,8 +6,8 @@ The GhosPost Machine is a website where people can anonymously post Boasts or Ro
 
 ### Front-End:
 
--   GET, and POST endpoints for boasts and roasts
--   POST endpoints for voting on boasts and roasts
+- GET, and POST endpoints for boasts and roasts
+- POST endpoints for voting on boasts and roasts
 
 ## Installation
 
@@ -21,6 +21,12 @@ Then, install all the dependencies required for this project:
 
 ```bash
 poetry install
+```
+
+Don't forget to run the respective migrations:
+
+```bash
+    python manage.py migrate
 ```
 
 Finally, you are ready to run the server with
