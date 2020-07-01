@@ -6,21 +6,21 @@ The GhosPost Machine is a website where people can anonymously post Boasts or Ro
 
 ### Front-End:
 
-- GET, and POST endpoints for boasts and roasts
-- POST endpoints for voting on boasts and roasts
+-   GET, and POST endpoints for boasts and roasts
+-   POST endpoints for voting on boasts and roasts
 
 ## Installation
 
-Use the package manager [poetry](https://python-poetry.org/) to install the Django API version.
-
-```bash
-poetry install
-```
-
-Then, start a virtual environment with the following command:
+Use the package manager [poetry](https://python-poetry.org/) to start a virtual environment:
 
 ```bash
 poetry shell
+```
+
+Then, install all the dependencies required for this project:
+
+```bash
+poetry install
 ```
 
 Finally, you are ready to run the server with
