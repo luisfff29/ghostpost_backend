@@ -35,4 +35,4 @@ Finally, you are ready to run the server with
 python manage.py runserver
 ```
 
-and check out the Ghost Post API built with Django in this [link](http://localhost:8000/api).
+and check out the Ghost Post API built with Django in this [link](http://localhost:8000/api/posts/).
